@@ -37,6 +37,8 @@ class PodGetXVideoController extends _PodUiController {
   ///
   Duration get videoPosition => _videoPosition;
 
+  void Function()? customListener;
+
   bool controllerInitialized = false;
   late PodPlayerConfig podPlayerConfig;
   late PlayVideoFrom playVideoFrom;
@@ -76,6 +78,7 @@ class PodGetXVideoController extends _PodUiController {
       podVideoStateChanger(PodVideoState.error);
       update(['errorState']);
       update(['update-all']);
+      customListener?.call();
       podLog('ERROR ON POD_PLAYER:  $e');
       rethrow;
     }

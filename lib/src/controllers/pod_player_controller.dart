@@ -84,6 +84,7 @@ class PodPlayerController {
 
   ///Listen to changes in video
   void addListener(void Function() listner) {
+    _ctr.customListener = listner;
     _checkAndWaitTillInitialized().then(
       (value) => _ctr.videoCtr?.addListener(listner),
     );
