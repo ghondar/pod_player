@@ -63,6 +63,9 @@ class PodPlayerController {
   /// retuens true if `loop` is enabled
   bool get isVideoLooping => _ctr.videoCtr?.value.isLooping ?? false;
 
+  // return true if video is seeked to a duration
+  bool get isSeekTo => _ctr.isSeekTo;
+
   /// returns true if video is in fullscreen mode
   bool get isFullScreen => _ctr.isFullScreen;
 

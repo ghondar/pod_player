@@ -7,6 +7,7 @@ class _PodVideoController extends _PodBaseController {
   bool isOverlayVisible = true;
   bool isLooping = false;
   bool isFullScreen = false;
+  bool isSeekTo = false;
   bool isvideoPlaying = false;
 
   List<String> videoPlaybackSpeeds = [
@@ -25,17 +26,23 @@ class _PodVideoController extends _PodBaseController {
   ///*seek video
   /// Seek video to a duration.
   Future<void> seekTo(Duration moment) async {
+    isSeekTo = true;
     await _videoCtr!.seekTo(moment);
+    isSeekTo = false;
   }
 
   /// Seek video forward by the duration.
   Future<void> seekForward(Duration videoSeekDuration) async {
+    isSeekTo = true;
     await seekTo(_videoCtr!.value.position + videoSeekDuration);
+    isSeekTo = false;
   }
 
   /// Seek video backward by the duration.
   Future<void> seekBackward(Duration videoSeekDuration) async {
+    isSeekTo = true;
     await seekTo(_videoCtr!.value.position - videoSeekDuration);
+    isSeekTo = false;
   }
 
   ///mute
