@@ -223,7 +223,6 @@ class _PodVideoController extends _PodBaseController {
       Navigator.push(
         mainContext,
         PageRouteBuilder(
-          opaque: true,
           fullscreenDialog: true,
           pageBuilder: (BuildContext context, _, __) => FullScreenView(
             tag: tag,

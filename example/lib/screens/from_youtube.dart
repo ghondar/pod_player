@@ -14,9 +14,12 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromYoutube> {
   @override
   void initState() {
     controller = PodPlayerController(
-        playVideoFrom: PlayVideoFrom.youtube('https://youtu.be/A3ltMaM6noM'),
-        podPlayerConfig: const PodPlayerConfig(initialVideoQuality: 360))
-      ..initialise();
+      playVideoFrom: PlayVideoFrom.youtube('https://youtu.be/A3ltMaM6noM'),
+      podPlayerConfig: const PodPlayerConfig(
+        initialVideoQuality: 360,
+        autoPlay: false,
+      ),
+    )..initialise();
     super.initState();
   }
 
@@ -35,7 +38,15 @@ class _PlayVideoFromVimeoIdState extends State<PlayVideoFromYoutube> {
           child: ListView(
             shrinkWrap: true,
             children: [
-              PodVideoPlayer(controller: controller),
+              PodVideoPlayer(
+                controller: controller,
+                videoThumbnail: const DecorationImage(
+                  image: NetworkImage(
+                    'https://images.unsplash.com/photo-1569317002804-ab77bcf1bce4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dW5zcGxhc2h8ZW58MHx8MHx8&w=1000&q=80',
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
               const SizedBox(height: 40),
               _loadVideoFromUrl()
             ],
